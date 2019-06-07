@@ -1,0 +1,312 @@
+\renewcommand\textbullet{\ensuremath{\bullet}}
+
+
+\RequirePackage[framemethod=TikZ]{mdframed}
+
+
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{Outline}
+		\addtocounter{framenumber}{-1}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+
+
+
+
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\DeclareSymbolFontAlphabet{\mathnormal}{letters}	
+
+
+
+
+%\setbeamertemplate{background}{%
+%	\ifnum\thepage>1\relax
+%		\includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio]{NTU_bg}
+%	\else
+%		\includegraphics[height=\paperheight, keepaspectratio]{NTU_bg}
+%	\fi
+%}
+%\setbeamertemplate{navigation symbols}{}
+
+%%%%%%%%% Adjust logo
+\newlength{\navigationsymbolheight}
+\settoheight{\navigationsymbolheight}{\NoHyper\insertframenavigationsymbol}
+\logo{\raisebox{-\navigationsymbolheight}{\includegraphics[scale=.25]{logo_big}}}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{sidebar right}{}
+
+%\usepackage{ifthen}
+\newcommand*{\ntuhideframenumber}{\gdef\@ntuhideframenumber}
+
+\setbeamertemplate{footline}{%
+	\usebeamertemplate***{navigation symbols}
+	\hspace{1cm}
+	\ifx \@ntuhideframenumber\@empty
+	\else \insertframenumber{}/\inserttotalframenumber \fi
+	\hfill \insertlogo\hspace*{1.em}\par\vspace{2pt}}
+
+
+
+%%%%%%%%%%%% Adjust titlepage
+\RequirePackage{graphicx,hyperref}
+\newcommand*{\project}[1]{\gdef\@project{#1}%
+}
+\newcommand*{\@project}{\texttt{\string\project} currently not set.}
+\newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}%
+}
+\newcommand*{\@supervisor}{\texttt{\string\supervisor} currently not set.}
+
+\newcommand*{\designation}[1]{\gdef\@designation{#1}%
+}
+\newcommand*{\@designation}{\texttt{\string\designation} currently not set.}
+
+\newcommand*{\school}[1]{\gdef\@school{#1}%
+}
+\newcommand*{\@school}{\texttt{\string\school} currently not set.}
+\newcommand*{\matric}[1]{\gdef\@matric{#1}%
+}
+\newcommand*{\@matric}{}
+\newcommand*{\nmail}[1]{\gdef\@nmail{#1}%
+}
+\newcommand*{\@nmail}{}
+
+
+\makeatletter
+\setbeamertemplate{title page}
+{
+	%	\vbox{}
+	%	\vfill
+	\begin{centering}
+		\begin{beamercolorbox}[sep=0pt]{title}
+			{
+				\vskip1.25em
+				\inserttitlegraphic\par}
+			\vskip.7em 
+			\usebeamerfont{title}\inserttitle\par%
+			\normalfont
+			\vskip0.1em
+			\ifx\insertsubtitle \@empty%
+			\else%
+			\vskip0.1em%
+			{\usebeamerfont{subtitle}\insertsubtitle ~--~ }%
+			\fi%     
+			\usebeamerfont{subtitle}\@project \par
+		\end{beamercolorbox}%
+		\vskip.37em
+		\begin{beamercolorbox}[sep=0pt]{author}
+			\usebeamerfont{date}{presented by} \\ \vskip.2em
+			\normalfont
+			\usebeamerfont{author}{\insertauthor}
+			\ifx\@matric\@empty%
+			\else%
+			\usebeamerfont{date}{\sffamily\normalfont (\@matric)}
+			\fi
+			\ifx\@nmail\@empty%
+			\else%
+			\usebeamerfont{date}\href{mailto:\@nmail}{\tt \@nmail}
+			\fi	
+			\normalfont \\
+			\usebeamerfont{institute}\@designation\\
+			\usebeamerfont{institute}\@school,
+			\usebeamerfont{institute}\insertinstitute
+			\normalfont
+			\vskip.5em
+			\ifx\@supervisor\@empty%
+			\else%
+			{Supervisor: \usebeamerfont{institute}\normalfont\@supervisor\par}
+			\fi
+			
+			\vskip.5em
+			\usebeamerfont{date}\insertdate
+		\end{beamercolorbox}
+	\end{centering}
+	\vfill
+}
+\makeatother
+
+
+
+\surroundwithmdframed[roundcorner=5pt,
+linewidth=0.7pt,
+linecolor=NTUMediumRed,
+innertopmargin=0pt, 
+]{alertblock}
+
+\surroundwithmdframed[roundcorner=5pt,
+linewidth=0.7pt,
+linecolor=NTUMediumBlue,
+innertopmargin=0pt,
+]{block}
+
+
+\surroundwithmdframed[roundcorner=5pt,
+linewidth=0.7pt,
+linecolor=NTUMediumGreen,
+innertopmargin=0pt,
+]{exampleblock}
+
+%\setbeamerfont{title}{size=\LARGE}
+%\setbeamerfont{title page}{size=\normalsize}
+
+\definecolor{NTULightBlue}{RGB}{183,223,248}
+\definecolor{NTUMediumGreen}{RGB}{59,224,32}
+\definecolor{NTUMediumBlue}{RGB}{88,159,238}
+\definecolor{NTUMediumRed}{RGB}{243,55,41}
+\definecolor{NTUHeadingRed}{RGB}{198,12,48}
+\definecolor{NTUTitleBlue}{RGB}{31,73,125}
+\definecolor{NTUTitleGreen}{RGB}{74,210,97}
+
+
+
+\setbeamercolor{block title}{fg=NTUTitleBlue}
+\setbeamercolor{exampleblock title}{fg=NTUTitleGreen}
+\setbeamercolor{alertblock title}{fg=NTUHeadingRed}
+%\setbeamercolor{block body}{fg=black, bg=NTULightBlue}
+
+%\setbeamercolor{title page}{fg=NTUTitleBlue}
+\setbeamercolor{title}{fg=NTUHeadingRed}
+\titlegraphic{\includegraphics[scale=.5]{logo_big}}
+
+
+
+\usepackage{iftex}
+\ifXeTeX
+\usepackage{fontspec}
+\usefonttheme{serif}
+\setmainfont{Arial}
+\defaultfontfeatures{Mapping=tex-text} 
+\usepackage{xunicode} 
+\usepackage{xltxtra}
+\defaultfontfeatures{Ligatures=TeX} % to have the automatics ligatures of TeX
+%\usepackage{titlesec}
+%\usepackage{titling}
+% Specify different font for section headings
+\newfontfamily\headingfont[]{Verdana}
+%\titleformat*{\title}{\LARGE\headingfont}
+
+\setbeamerfont{title}{size=\LARGE,series=\bfseries, family=\headingfont}
+
+\else
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+%\usepackage[T1]{fontenc}
+%\usepackage{uarial}
+%\renewcommand{\familydefault}{\sfdefault}
+\setbeamerfont{title}{size=\LARGE,series=\bfseries, }
+\fi
+
+
+\setbeamercolor{subtitle}{fg=NTUHeadingRed}
+\setbeamerfont{subtitle}{size=\normalsize, series=\normalfont}
+
+\setbeamercolor{author}{fg=NTUTitleBlue,}
+\setbeamerfont{author}{size=\footnotesize, series=\bfseries}
+
+\setbeamercolor{date}{fg=NTUTitleBlue}
+\setbeamerfont{date}{size=\scriptsize, series=\itshape}
+
+\setbeamercolor{institute}{fg=NTUTitleBlue}
+\setbeamerfont{institute}{size=\footnotesize, series=\itshape}
+
+
+\setbeamerfont{frametitle}{size=\LARGE,series=\bfseries}
+\setbeamercolor{frametitle}{fg=NTUTitleBlue}
+\setbeamerfont{framesubtitle}{size=\large\normalfont}
+\setbeamercolor{framesubtitle}{fg=NTUTitleBlue}
+
+\setbeamercolor{section title}{fg=NTUTitleBlue}
+%\setbeamercolor{section in toc}{fg=NTUTitleBlue}
+%\newenvironment{xplainframe}{\bgroup%
+%	\setbeamertemplate{background}{}%
+%	\setbeamercolor{frametitle}{bg=PraterStreetTitleBlue}%
+%	\begin{frame}}{\end{frame}\egroup}
+%\newcommand{\sectionframe}{\frame{\sectionpage}}
+
+
+%%%%%%%%% Adjust items
+%\usepackage{enumitem}
+%\setlistdepth{4}
+
+%\makeatletter
+% \ifnum \@itemdepth >4\@toodeep\else
+%\makeatother
+
+%\setcounter{tocdepth}{4}
+
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\donotcoloroutermaths \textbullet}}
+\setbeamertemplate{itemize subitem}{\scriptsize\raise1.5pt\hbox{\donotcoloroutermaths \large--}}
+\setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths \small\textbullet}}
+%\setbeamertemplate{itemize subsubsubitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths \large-}}
+
+\settowidth{\leftmargini}{\usebeamertemplate{itemize item}}
+\addtolength{\leftmargini}{\labelsep}
+
+\setbeamertemplate{enumerate item}{\insertenumlabel.}
+%\setbeamertemplate{enumerate subitem}{\insertenumlabel.\insertsubenumlabel}
+\setbeamertemplate{enumerate subitem}{\insertsubenumlabel.}
+%\setbeamertemplate{enumerate subsubitem}{\insertenumlabel.\insertsubenumlabel.\insertsubsubenumlabel}
+\setbeamertemplate{enumerate subsubitem}{\insertsubsubenumlabel.}
+%\setbeamertemplate{enumerate mini template}{\insertenumlabel}
+
+
+
+%%%%%%%%%%%%%%% Frame title
+%\usepackage{etoolbox}
+%\makeatletter
+%\patchcmd{\endbeamer@frameslide}{\ifx\beamer@frametitle\@empty}{\iffalse}{}{\errmessage{failed to patch}}
+%\makeatother
+
+%\setbeamertemplate{frametitle}{\hskip.5em\vskip1.25ex\ifx\beamer@frametitle\@empty\else\usebeamerfont{frametitle}\insertframetitle\vskip.2em\fi\ifx\beamer@framesubtitle\@empty \else\usebeamerfont{framesubtitle}\insertframesubtitle\fi} 
+\setbeamertemplate{frametitle}{\hskip.5em\vskip1.75ex\ifx\beamer@frametitle\@empty\else\usebeamerfont{frametitle}\insertframetitle\vskip.25em\fi\ifx\beamer@framesubtitle\@empty \else\usebeamerfont{framesubtitle}\insertframesubtitle\fi} 
+
+%\setbeamertemplate{framesubtitle}{\hskip1.5em\insertframesubtitle} 
+%\addtobeamertemplate{frametitle}{\vskip+2.5ex}{}
+
+%\setbeamertemplate{frame}{\insertframe}
+%\setbeamersize{text margin left=32.5pt,text margin right=15pt,}
+%\setbeamersize{text margin left=232.5pt,text margin right=15pt,}
+%\addtolength{\headsep}{-232.5pt}
+
+
+
+\newcommand{\beginning}{
+	
+	
+	{
+		\let\otp\titlepage
+		\renewcommand{\titlepage}{\otp\addtocounter{framenumber}{-1}}
+		\setbeamertemplate{footline}{} 
+		
+		\begin{frame}{}%[shrink]
+			
+			\titlepage
+			
+		\end{frame}
+	}
+	
+	\begin{frame}{Outline}
+		\tableofcontents
+	\end{frame}
+	
+}
+
+
+\let\oldframe\frame
+\renewcommand\frame[1][t]{\oldframe[#1]}
+%\renewcommand\frame[1][]{\oldframe[t,#1]}	
+
+\makeatletter
+%
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=green!50!black}
+\setbeamercolor{structure}{fg=black}
+
+\makeatother

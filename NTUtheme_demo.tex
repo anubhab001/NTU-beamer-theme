@@ -1,0 +1,110 @@
+\documentclass{beamer}
+\usetheme{NTU}
+
+\title{This is your title}
+\subtitle{What about a subtitle}
+\project{for this project!}
+\author{John Who}
+\matric{X\#\#\#X}
+\nmail{who@i.nst.ti.tute}
+\institute{Institute of Galaxy}
+\designation{Potential student}
+\school{School of Galactic Engineering}
+\supervisor{Asst. Prof. Cares Who}
+\date{\today}
+
+%\ntuhideframenumber{} %Hide frame numbering
+
+\begin{document}
+	\beginning
+	
+	\section{Frames}
+	
+	\begin{frame}{Frame Title}
+		A regular frame
+	\end{frame}
+
+	\subsection{Continued Frame}	
+	
+	\begin{frame}{Frame Title}{Frame subtitle}
+		Another regular frame
+	\end{frame}
+	
+	\begin{frame}{Frame Title \RNum{2}}{Frame subtitle}
+		Last frame continued $\ldots$ 
+	\end{frame}
+	
+	\subsection{Irregular Frame}
+	\begin{frame}
+		No title, full page
+	\end{frame}
+
+	\begin{frame}{\null}
+		No title, space reserved for title
+	\end{frame}	
+	
+	\section{Items}
+	
+	\subsection{Itemize}
+	
+	\begin{frame}{Itemize}
+		
+		\begin{itemize}
+			\item Whoa!
+			\item An item!
+			\begin{itemize}
+				\item Sub-items
+				\begin{itemize}
+					\item Sub-sub-items
+%					\begin{itemize}
+%						\item Sub-sub-sub item
+%					\end{itemize}
+				\end{itemize}
+			\end{itemize}
+		\end{itemize}
+
+	\end{frame}
+	
+
+	\subsection{Enumerate}
+	
+	\begin{frame}{Enumerate}
+		\begin{enumerate}
+			\item Enumerate item!
+			\item Another
+			\begin{enumerate}
+				\item Another level
+				\begin{enumerate}
+					\item Yet another $\ldots$
+				\end{enumerate}
+			\end{enumerate}
+		\end{enumerate}
+	\end{frame}
+
+
+	\section{Blocks}
+	\begin{frame}{Blocks}
+		
+		\begin{block}{Block}
+			This is a block
+		\end{block}
+		
+		\begin{exampleblock}{Example Block}
+			This is an example block
+		\end{exampleblock}
+
+		\begin{alertblock}{Alert Block}
+			This is an alert block
+		\end{alertblock}
+		
+		This is an \alert{alerted} text
+	\end{frame}
+	
+	\section{Mathematics}
+	\begin{frame}{Want to typeset math?}
+		$\frac a b = \frac b a$
+		
+		$$a^x_b = \int_{0}^{\infty}x^y+ 5$$
+		
+	\end{frame}
+\end{document}
