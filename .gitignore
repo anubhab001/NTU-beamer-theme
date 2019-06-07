@@ -16,3 +16,6 @@ SCE_Powerpoint_Template.ppt
 *.ind
 *.fdb_latexmk
 *.fls
+*.synctex.gz
+*.snm
+*.nav
